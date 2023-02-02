@@ -2,7 +2,7 @@
 - name: List User Informations 
   hosts: localhost
   collections:
-    - localhost
+    - azure.azcollection
   gather_facts: false 
  
   tasks:       
