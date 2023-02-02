@@ -10,12 +10,12 @@
   gather_facts: false
 
   vars_files:      
-      - "external_vars.yml"       
+      - "vars/external_vars.yml"       
 
   tasks:
     - name: Include vars of Tag FIG
       include_vars:
-        file: tags.yml
+        file: vars/tags.yml
         name: tag
 
     - name: Create resource Group - "{{ prefix_rg_name }}-{{ rgroup_name|replace(' ', '')|lower|trim }}-{{ environmentTag|lower }}-{{ sequencialID }}"
