@@ -1,0 +1,26 @@
+--- 
+- name: List Role Definitions 
+  hosts: localhost
+  collections:
+    - azure.azcollection
+  gather_facts: false 
+ 
+  tasks:       
+    - name: List Role Definitions in scope
+      register: scope
+      azure_rm_roledefinition_info:
+        scope: /subscriptions/{{ subscriptionID }}/resourceGroups/{{ rg_name }}
+
+    - name: "Print results - scope"
+      debug:
+        var: scope
+
+    - name: Get Role Definition by name
+      register: name
+      azure_rm_roledefinition_info:
+        scope: /subscriptions/{{ subscriptionID }}/resourceGroups/{{ rg_name }}
+        role_name: 895fa643-a633-421f-a120-898a7a761cf7
+    
+    - name: "Print results - name"
+      debug:
+        var: name

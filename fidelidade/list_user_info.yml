@@ -1,0 +1,17 @@
+--- 
+- name: List User Informations 
+  hosts: localhost
+  collections:
+    - azure.azcollection
+  gather_facts: false 
+ 
+  tasks:       
+    - name: List User Info
+      register: scope
+      azure_rm_aduser_info:
+        user_principal_name: "{{ user }}" 
+        tenant: "{{ tenant }}"   
+
+    - name: "Print results - scope"
+      debug:
+        var: scope.ad_users[0].object_id
