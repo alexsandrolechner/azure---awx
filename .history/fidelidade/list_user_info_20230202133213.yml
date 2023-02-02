@@ -1,7 +1,7 @@
 ---   
 - name: Using user_principal_name
   hosts: all
-  tasks:
+  task:
     - name: List Role Definitions 
       azure.azcollection.azure_rm_aduser_info:
         user_principal_name: "{{ user }}" 
