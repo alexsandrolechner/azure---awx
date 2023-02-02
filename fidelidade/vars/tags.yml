@@ -1,0 +1,20 @@
+---
+# Description
+# Ficheiro de variaveis para as tags
+# ===========
+
+Company: "{{ companyTag }}" 
+Environment: "{{ environmentTag }}" 
+BusinessCriticity: "{{ businessCriticityTag }}"
+AppName: "{{ appNameTag }}"
+ITOrgOwner: "{{ iTOrgOwnerTag }}"
+ITOwner: "{{ iTOwnerTag }}"
+OpsOrgOwner: "{{ opsOrgOwnerTag }}"
+OpsOwner: "{{ opsOwnerTag }}"
+Project: "{{ projectTag if projectTag != '' else omit  }}"
+AppModuleName: "{{ appmodulenameTag if appmodulenameTag != '' else omit  }}"
+Category: "{{ categoryTag if categoryTag != '' else omit  }}"
+NeedBackup: "{{ needbackupTag }}"
+PatchManagementFase: "{{ patchmanagementfaseTag }}"
+NeedReboot: "{{ needrebootTag }}"
+

@@ -1,0 +1,21 @@
+---
+# vars file 
+
+fl_az_users: resources/user.csv
+prefix_rg_name: rg
+prefix_bg_name: bg
+prefix_group_name: G-Local-AR
+ID_tenant: id_tenant
+ID_subscription: subscriptionID
+bg_name: budgetName
+location_name: location
+rgroup_name: rg_name
+sequencialID: sequencial
+groupName: name_group
+
+######################################################## Subscriptions
+id_aut: "8c76f2ce-6939-4b55-8114-966dd80721f7"
+id_lab: "3bd30771-aefa-4a18-bb08-945d7a6e9862" 
+
+######################################################## Roles
+id_contributor: "b24988ac-6180-42a0-ab88-20f7382dd24c"

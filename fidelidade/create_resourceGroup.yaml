@@ -1,0 +1,44 @@
+---
+# Description
+# ===========
+# Este playbook cria os resource groups no Azure
+#
+- name: Create Resource Group
+  hosts: localhost
+  collections:
+    - azure.azcollection
+  gather_facts: false
+
+  vars_files:      
+      - "vars/external_vars.yml"       
+
+  tasks:
+    - name: Include vars of Tag FIG
+      include_vars:
+        file: vars/tags.yml
+        name: tag
+
+    - name: Create resource Group - "{{ prefix_rg_name }}-{{ rgroup_name|replace(' ', '')|lower|trim }}-{{ environmentTag|lower }}-{{ sequencialID }}"
+      register: rg
+      azure_rm_resourcegroup:
+        name: "{{ prefix_rg_name }}-{{ rgroup_name|replace(' ', '')|lower|trim }}-{{ environmentTag|lower }}-{{ sequencialID }}"
+        location: "{{ rg_location }}"
+        state: present
+        tags:
+          "{{ tag }}"
+
+    - name: SetFact subscriptionValue ---------------
+      set_fact:      
+        rg_name: "{{ prefix_rg_name }}-{{ rgroup_name|replace(' ', '')|lower|trim }}-{{ environmentTag|lower }}-{{ sequencialID }}" 
+          
+    - name: Print RG Name ---------------
+      debug:      
+        msg: "################################ RG NAME : {{ rg_name }}" 
+
+    - name: Export vars
+      set_stats:
+        data:
+          var_name: "{{ rgroup_name if rgroup_name != '' else omit }}"
+          var_rgroup_name: "{{ rg_name if rg_name != '' else omit }}"
+          var_location: "{{ rg_location if rg_location != '' else omit }}"
+          var_sub_id: "{{ environmentTag if environmentTag != '' else omit }}"          
