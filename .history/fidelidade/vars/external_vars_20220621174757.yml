@@ -1,8 +1,6 @@
 ---
 # vars file 
 
-
-
 fl_az_users: resources/user.csv
 prefix_rg_name: rg
 prefix_bg_name: bg
