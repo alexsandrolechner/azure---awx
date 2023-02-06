@@ -1,0 +1,12 @@
+---   
+- name: Using user_principal_name
+  hosts: localhost
+  collections:
+    - azure.azcollection
+  gather_facts: no 
+  tasks:
+    - name: List Role Definitions 
+      azure_rm_aduser_info:
+        user_principal_name: "{{ user }}" 
+        tenant: "{{ tenant }}" 
+        state: list
